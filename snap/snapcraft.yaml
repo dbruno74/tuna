@@ -1,0 +1,21 @@
+name: tuna
+base: core22 # the base snap is the execution environment for this snap
+version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
+summary: A tuna snap
+description: |
+  A tuna snap
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+environment:
+    PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
+
+apps:
+  tuna:
+    command: usr/bin/tuna
+
+parts:
+  tuna:
+    # See 'snapcraft plugins'
+    plugin: nil
+    stage-packages: [tuna, python3-ethtool, python3-linux-procfs, python3-schedutils, python3]
